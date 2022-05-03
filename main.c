@@ -244,9 +244,16 @@ void sort_s(char *a, int len) {
 //---------Inserción---------//
 
 void sort_i(char *a, int len) {
-    char tmp[2];
+    char aux;
+    int pos;
     for (int i = 0; i < len; i++) {
-
+        pos = i;
+        aux = a[i];
+        while(pos > 0 && a[pos-1] > aux) {
+            a[pos] = a[pos-1];
+            pos--;
+        }
+        a[pos] = aux;
     }
 }
 
@@ -254,22 +261,42 @@ void sort_i(char *a, int len) {
 int Ejercicio11() {
     char a[] = {"casdb"};
     sort_s(a, strlen(a));
-    print
+    printf(a);
+    char b[] = {"casdb"};
+    sort_i(b, strlen(a));
+    printf(a);
 }
-
-
 
 //12. Dados dos arreglos ordenados alfabéticamente, crear un tercer arreglo con los elementos de los dos primeros intercalados, de manera que quede un arreglo también ordenado alfabéticamente.
-int Ejercicio12() {
-    
+char join_arrays_2(char *a, char *b, char *r) {
+    int lena = strlen(a);
+    int lenb = strlen(b);
+    printf("%d || %d\n", lena, lenb);
+    int pos = 0;
+    char result[8];
+    for (int i, j; i < lena, j < lenb; i++, j++) {
+        result[pos] = a[i];
+        pos++;
+        result[pos] = b[j];
+        pos++;
+    }
+    printf(result);
+    r = result;
 }
 
-//13. Dado un el vector {1,5,6,7,8} escribir un programa que genere otro vector con la suma del contenido de todo los elementos anteriores al índice actual: {1,6,12,19,27}.
+int Ejercicio12() {
+    char arr[] = {"aceg"};
+    char brr[] =  {"bdfh"};
+    char r[10];
+    join_arrays_2(arr, brr, r);
+    printf(r);
+}
+
+//13. Dado un el vector {1,5,6,7,8} escribir un programa que genere otro vector con la suma del contenido de todo los elementos 
+//    anteriores al índice actual: {1,6,12,19,27}.
 int Ejercicio13() {
     
 }
-
-//---------mentos anteriores al índice actual: {1,6,12,19,27}.---------//
 
 
 
@@ -278,7 +305,7 @@ int main() {
     int a;
     while(1 > 0) {
         clrscr();        
-        printf("\n--------------q--------------\n\n[1] Ejercicio 1\n[2] Ejercicio 2\n[3] Ejercicio 3\n[4] Ejercicio 4\n[5] Ejercicio 5\n[6] Ejercicio 6\n[7] Ejercicio 7\n[8] Ejercicio 8\n[9] Ejercicio 9\n[10] Ejercicio 10\n[11] Ejercicio 11\n[12] Ejercicio 12\n[13] Ejercicio 13\n\n");
+        printf("\n--------------Menu--------------\n\n[1] Ejercicio 1\n[2] Ejercicio 2\n[3] Ejercicio 3\n[4] Ejercicio 4\n[5] Ejercicio 5\n[6] Ejercicio 6\n[7] Ejercicio 7\n[8] Ejercicio 8\n[9] Ejercicio 9\n[10] Ejercicio 10\n[11] Ejercicio 11\n[12] Ejercicio 12\n[13] Ejercicio 13\n\n");
         printf("\nSeleccione un ejercicio: ");
         scanf("%d", &s);
         printf("\n-------------\n\n");
